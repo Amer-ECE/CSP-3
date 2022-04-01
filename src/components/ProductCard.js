@@ -39,8 +39,6 @@ const ProductCard = ({ productProp }) => {
     });
   };
 
-  // console.log(newItem.id);
-
   return (
     <Col lg="3" md="6">
       <Card className="product-card border-2">
