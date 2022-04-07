@@ -70,7 +70,7 @@ const Login = () => {
                 theme: "colored",
               });
 
-              navigate("/products");
+              navigate("/home");
             });
         } else {
           toast.error("Incorrect email or password", {
