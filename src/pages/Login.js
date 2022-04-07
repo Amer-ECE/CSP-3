@@ -96,7 +96,7 @@ const Login = () => {
   }, [email, password]);
 
   if (user.id !== null) {
-    return <Navigate to="/products" />;
+    navigate("/products");
   }
 
   return (
