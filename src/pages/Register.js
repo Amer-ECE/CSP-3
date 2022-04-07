@@ -22,10 +22,6 @@ const containerVariants = {
       delay: 0.5,
     },
   },
-  // exit: {
-  //   x: "-100vw",
-  //   transition: { ease: "easeInOut" },
-  // },
 };
 
 const Register = () => {
@@ -163,7 +159,6 @@ const Register = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          // exit="exit"
         >
           <div className="register-dark-col text-white d-none d-lg-flex align-items-center justify-content-center flex-column">
             <h2>Hello!</h2>

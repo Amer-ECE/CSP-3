@@ -1,16 +1,36 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import UserContext from "../UserContext";
 import { useCart } from "react-use-cart";
 import { Row, Col, Container, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import AppNavbar from "../components/AppNavbar";
-// import { total, list, get } from "cart-localstorage";
-// import BagView from "../components/BagView";
 import { toast } from "react-toastify";
+import emptyBag from "../images/empty-bag.png";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.5, duration: 0.5 },
+  },
+};
+
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    transition: {
+      duration: 0.4,
+      yoyo: Infinity,
+    },
+  },
+};
 
 const Bag = () => {
   const {
     isEmpty,
-    totalUniqueItems,
     items,
     totalItems,
     cartTotal,
@@ -19,14 +39,9 @@ const Bag = () => {
     emptyCart,
   } = useCart();
 
-  // const [productId, setProductId] = useState("");
-  // let productId;
-
   const token = localStorage.getItem("token");
 
   const { user } = useContext(UserContext);
-
-  console.log(items);
 
   const checkOut = (e) => {
     e.preventDefault();
@@ -56,6 +71,7 @@ const Bag = () => {
             progress: undefined,
             theme: "colored",
           });
+          emptyCart();
         } else {
           toast.error("Something went wrong, please try again", {
             position: "top-center",
@@ -69,7 +85,6 @@ const Bag = () => {
           });
         }
       });
-    emptyCart();
   };
 
   return (
@@ -77,12 +92,29 @@ const Bag = () => {
       <AppNavbar />
       <Container>
         {isEmpty ? (
-          <h3>Your Bag is Empty</h3>
+          <motion.div
+            className="d-flex flex-column align-items-center justify-content-center"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <img src={emptyBag} alt="emptyBag" className="empty-bag-img mt-1" />
+            <h3 className="fw-bold my-3">Your Bag is Empty</h3>
+            <Link to="/products">
+              <motion.button
+                className="empty-bag-btn btn"
+                variants={buttonVariants}
+                whileHover="hover"
+              >
+                Show Products
+              </motion.button>
+            </Link>
+          </motion.div>
         ) : (
           <Row className="justify-content-center">
             <Col>
-              <h5>
-                Bag {totalUniqueItems} - Total Items {totalItems}
+              <h5 className="text-center my-2">
+                Total Items: <span className="total-items">{totalItems}</span>
               </h5>
               <Table light hover>
                 <tbody>
@@ -91,7 +123,7 @@ const Bag = () => {
                       <tr key={item.id}>
                         <td>
                           <img
-                            src={item.img}
+                            src={item.imageUrl}
                             style={{ height: "6rem" }}
                             alt="img"
                           />

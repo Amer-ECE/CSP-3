@@ -73,7 +73,7 @@ const Login = () => {
               navigate("/products");
             });
         } else {
-          toast.error("Something went wrong, please try again", {
+          toast.error("Incorrect email or password", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,

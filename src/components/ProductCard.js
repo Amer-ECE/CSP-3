@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Col, Card } from "react-bootstrap";
-// import test from "../images/test.webp";
 import { Link } from "react-router-dom";
 import { MdShoppingBag } from "react-icons/md";
 import { BsFillInfoCircleFill } from "react-icons/bs";
@@ -17,7 +16,7 @@ const ProductCard = ({ productProp }) => {
   const newItem = {
     id: productProp._id,
     productId: productProp._id,
-    img: productProp.imageUrl,
+    imageUrl: productProp.imageUrl,
     title: productProp.title,
     price: productProp.price,
     quantity: productProp.quantity,
@@ -25,7 +24,7 @@ const ProductCard = ({ productProp }) => {
 
   const { user } = useContext(UserContext);
 
-  const addTOBag = () => {
+  const addToBag = () => {
     addItem(newItem);
     toast.success("Item Added to Bag", {
       position: "top-center",
@@ -57,7 +56,7 @@ const ProductCard = ({ productProp }) => {
             </button>
           </Link>
         ) : (
-          <button className="btn bag-btn" onClick={addTOBag}>
+          <button className="btn bag-btn" onClick={addToBag}>
             <MdShoppingBag />
           </button>
         )}

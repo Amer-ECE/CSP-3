@@ -15,6 +15,7 @@
   --green: #50c878;
   --blue: #71c7ec;
 }
+
 /* Global */
 h1,
 h2,
@@ -24,34 +25,43 @@ h5,
 h6 {
   font-family: var(--main-font);
 }
+
 body {
   font-family: var(--body-font);
 }
+
 .btn {
   letter-spacing: 2px;
 }
+
 .btn:hover {
   color: var(--white);
 }
+
 .btn:focus {
   box-shadow: none;
 }
+
 .common-btn {
   border-radius: 20px;
   color: var(--white);
 }
+
 .land-btn {
   margin-bottom: 10px;
   width: 50%;
   border-radius: 20px;
 }
+
 .login-btn {
   background-color: var(--dark);
   color: var(--white);
 }
+
 .register-btn {
   background-color: var(--dark-red);
 }
+
 .show-products-btn {
   background-color: var(--dark-gray);
 }
@@ -59,7 +69,6 @@ body {
 /* Start of Navbar */
 .navbar {
   background-color: var(--dark);
-  /* width: 100%; */
   position: relative;
 }
 .nav-logo {
@@ -68,7 +77,6 @@ body {
 .nav-link {
   color: var(--white);
   display: inline-block;
-  /* background-color: var(--dark-red); */
   margin: 0 5px;
 }
 .user-profile-btn {
@@ -86,7 +94,6 @@ body {
   width: 70%;
 }
 .form button {
-  /* margin-left: 23%; */
   width: 50%;
   border-radius: 20px;
 }
@@ -108,7 +115,6 @@ body {
   background-color: var(--white);
   color: var(--dark-red);
   padding: 1px;
-  /* cursor: text; */
   font-size: 14px;
   font-weight: 600;
 }
@@ -116,6 +122,7 @@ body {
   width: 50%;
   height: 70%;
 }
+
 /* -------- Start of Register Columns Styling -------- */
 .form-wrapper .register-dark-col {
   width: 100%;
@@ -125,6 +132,7 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
 .form-wrapper .register-light-col {
   background-color: var(--white);
   width: 100%;
@@ -132,16 +140,19 @@ body {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .password-not-match {
   font-size: 12px;
   color: var(--dark-red);
   font-weight: bold;
 }
+
 .password-match {
   font-size: 12px;
   color: green;
   font-weight: bold;
 }
+
 /* -------- End of Register Columns Styling -------- */
 /* -------- Start of Login Columns Styling -------- */
 .form-wrapper .login-dark-col {
@@ -159,6 +170,7 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
 /* -------- End of Login Columns Styling -------- */
 .form-wrapper span {
   position: relative;
@@ -198,6 +210,26 @@ body {
   background: linear-gradient(to bottom, var(--dark), var(--dark-gray));
 }
 /* End of LandPage */
+
+/* Start of Home */
+.banner {
+  height: 200px;
+  background-color: var(--light-gray);
+}
+.home-logo {
+  width: 8%;
+}
+.new-btn {
+  background-color: var(--white);
+  color: var(--dark-red);
+  position: absolute;
+  border: 5px solid var(--white);
+  right: -20px;
+  bottom: -20px;
+  border-radius: 45%;
+  font-size: 20px;
+}
+/* End of Home */
 
 /* Start of ProductsPage */
 .product-card {
@@ -243,7 +275,6 @@ body {
 
 /* Start of ProductDetails */
 .product-details-wrapper {
-  /* width: 100%; */
   border: 2px solid var(--dark-red);
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -297,6 +328,7 @@ body {
   border-radius: 20px;
   height: 40px;
 }
+/* End of ProductDetails */
 
 /* Start of Admin View */
 .disable-btn,
@@ -338,4 +370,47 @@ body {
 }
 .status-available {
   color: var(--green);
+}
+/* End of Admin View */
+
+/* Start of Bag */
+.total-items {
+  padding: 3px 10px;
+  border-radius: 50%;
+  background-color: var(--dark-red);
+  color: var(--white);
+}
+.empty-bag-img {
+  width: 50%;
+}
+.empty-bag-btn {
+  background-color: var(--dark-red);
+  border-radius: 20px;
+  font-weight: bold;
+}
+/* End of Bag */
+
+/* Start of User's Order */
+.accordion-button {
+  background: linear-gradient(to bottom, var(--dark), var(--dark-gray));
+}
+.accordion-button:focus {
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.order-history-wrapper {
+  color: var(--white);
+  cursor: pointer;
+  width: 100%;
+}
+.order-history-wrapper span {
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid var(--white);
+}
+.order-info {
+  background-color: var(--light-gray);
+}
+/* End of User's Order */
+.error-img {
+  width: 40%;
 }

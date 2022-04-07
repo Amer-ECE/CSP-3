@@ -1,19 +1,25 @@
 import { useState, useEffect } from "react";
-import "./App.css";
-import LandPage from "./pages/LandPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import LandPage from "./pages/LandPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { UserProvider } from "./UserContext";
 import ProductDetails from "./pages/ProductDetails";
 import Bag from "./pages/Bag";
 import Orders from "./pages/Orders";
-// import { list } from "cart-localstorage";
-import { CartProvider, useCart } from "react-use-cart";
+import AllOrders from "./pages/AllOrders";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+
+import { UserProvider } from "./UserContext";
+import { CartProvider } from "react-use-cart";
+
+import { ToastContainer } from "react-toastify";
 import { AnimatePresence } from "framer-motion";
+
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState({
@@ -60,6 +66,7 @@ function App() {
             <Router>
               <Routes>
                 <Route exact path="/" element={<LandPage />} />
+                <Route exact path="/home" element={<Home />} />
                 <Route exact path="/register" element={<Register />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/products" element={<Products />} />
@@ -69,7 +76,9 @@ function App() {
                   element={<ProductDetails />}
                 />
                 <Route exact path="/bag" element={<Bag />} />
-                {/* <Route exact path="/orders" element={<Orders />} /> */}
+                <Route exact path="/orders" element={<Orders />} />
+                <Route exact path="/allOrders" element={<AllOrders />} />
+                <Route path="*" element={<Error />} />
               </Routes>
             </Router>
           </UserProvider>

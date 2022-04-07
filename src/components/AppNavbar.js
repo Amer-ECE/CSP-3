@@ -23,9 +23,15 @@ const AppNavbar = () => {
     </>
   ) : (
     <>
-      {/* <Link className="nav-link text-white" to="/orders">
-        Orders
-      </Link> */}
+      {user.isAdmin ? (
+        <Link className="nav-link text-white" to="/allOrders">
+          Users Orders
+        </Link>
+      ) : (
+        <Link className="nav-link text-white" to="/orders">
+          Orders
+        </Link>
+      )}
 
       <Link className="nav-link text-white" to="/bag">
         <MdShoppingBag /> Bag
@@ -46,7 +52,9 @@ const AppNavbar = () => {
       <Navbar expand="lg" className="navbar">
         <Container className="nav-container d-flex align-items-center justify-content-between">
           <Navbar.Brand>
-            <img src={navLogo} alt="navLogo" className="nav-logo" />
+            <Link to="/home">
+              <img src={navLogo} alt="navLogo" className="nav-logo" />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
@@ -63,21 +71,6 @@ const AppNavbar = () => {
         </Container>
       </Navbar>
     </>
-
-    // <nav className="navbar">
-    //   <Container className="nav-container d-flex align-items-center justify-content-between">
-    //     <img src={navLogo} alt="nav logo" className="nav-logo" />
-    //     <div className="nav-items">
-    //       <Link className="nav-link" to="/">
-    //         Products
-    //       </Link>
-    //     </div>
-    //     <div className="right-nav ">
-    //       {/* <input type="text" className="search-bar" /> */}
-    //       {rightNav}
-    //     </div>
-    //   </Container>
-    // </nav>
   );
 };
 

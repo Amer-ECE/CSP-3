@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import AppNavbar from "../components/AppNavbar";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Container, Accordion, Row, Col } from "react-bootstrap";
 
-const Orders = () => {
+const AllOrders = () => {
   const [ordersData, SetOrdersData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
 
   const token = localStorage.getItem("token");
 
   const fetchData = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/orders/myOrders`, {
+    fetch(`${process.env.REACT_APP_API_URL}/orders/allOrders`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -16,6 +17,18 @@ const Orders = () => {
         SetOrdersData(data);
       });
   };
+
+  const fetchUser = () => {
+    ordersData.map((item) => {
+      fetch(`${process.env.REACT_APP_API_URL}/users/${item.userId}`)
+        .then((res) => res.json())
+        .then((data) => setUsersData(data));
+    });
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, [ordersData]);
 
   useEffect(() => {
     fetchData();
@@ -25,16 +38,19 @@ const Orders = () => {
     <>
       <AppNavbar />
       <Container>
-        <h3 className="text-center mt-2">Orders History</h3>
+        <h3 className="text-center mt-2">Users Orders</h3>
         {ordersData.map((item) => {
           return (
             <Row>
-              <Col key={item._id}>
+              <Col>
                 <Accordion defaultActiveKey="0" className="my-1">
-                  <Accordion.Item>
+                  <Accordion.Item key={item._id}>
                     <Accordion.Header>
                       <div className="order-history-wrapper d-md-flex justify-content-around align-items-center">
-                        <p className="my-auto py-2">OrderId: {item._id}</p>
+                        <p className="my-auto py-2">
+                          Ordered By: {usersData.email} <br />
+                          Phone Number: {usersData.phoneNum}
+                        </p>
                         <span className="d-none d-md-block"></span>
                         <p className="my-auto py-2">Status: {item.status}</p>
                         <span className="d-none d-md-block"></span>
@@ -78,4 +94,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default AllOrders;
